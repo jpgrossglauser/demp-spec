@@ -5,6 +5,63 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 
 ---
 
+## [0.5.0] - 2026-01-13
+
+### Added
+
+- **Alert Levels**  
+  Introduced a normative **Alert Level** model defining escalation tiers and response expectations.
+
+- **Certification**  
+  Added a new normative **Certification** section defining the trust, certification and verification model for DEMP, including certification subjects, authorities and auditability requirements.
+
+  - **Independent Certification Authority (ICA)**  
+    Added a normative definition of **Independent Certification Authorities**, including lifecycle management requirements (issuance, expiry, suspension and revocation) and peer oversight capabilities.
+
+  - **Certification Framework**  
+    Established a unified **Certification Framework** defining mandatory properties of certifications, including cryptographic verifiability, issuer attribution and time-bounded validity.
+
+  - **Certified Entity and Certified SIS**  
+    Introduced explicit definitions for **Certified Entities** and **Certified Safety Information Systems (SIS)** as first-class trust subjects within DEMP.
+
+  - **Auditability Requirements**  
+    Added mandatory auditability of trust-related events, including append-only audit registries and pseudonymity by design.
+
+- **Chain of Trust**  
+  Introduced a formal **Chain of Trust** model defining how trust is verified, enforced and recorded across Safety Information Systems (SIS). Trust assertions are now explicitly defined as cryptographically verifiable claims derived from certifications.
+
+- **Privileges-Based Authorization Model**  
+  Introduced an extensible, privileges-based authorization model allowing Safety Information Systems (SIS) to grant fine-grained operational privileges to Entities.
+
+### Changed
+- **Alert Status Model**  
+  Reworked alert lifecycle semantics.
+
+- **Federation**  
+  Clarified the definition of a Federation and refined the semantics of a Hierarchical Federation.
+
+- **Network Discovery**  
+  Clarified that participation in network directories is strictly voluntary and does not affect SIS autonomy.
+
+- **Safety Information System (SIS) Responsibilities**  
+  Clarified and formalized SIS responsibilities by explicitly defining normative requirements for data exchange, data processing, data storage and security.
+
+- **Document Structure**  
+  Reworked multiple sections to improve clarity, normative precision and consistency.
+
+- **Consensus Decision-Making (CDM)**  
+  Updated to align with the privileges-based authorization model, removing reliance on explicit Authoritative Entities and simplifying the deterministic fail-safe resolution mechanism.
+
+### Removed
+
+- **Alert Severity Model**  
+  Removed the Alert Severity model. Alert escalation and response expectations are now exclusively defined through the normative **Alert Level** model.
+
+- **Authoritative Entity Concept**  
+  Removed the dedicated **Authoritative Entity** concept. Authority and override behavior is now defined through an extensible, privilege-based authorization model.
+
+---
+
 ## [0.4.0] - 2025-12-19
 
 ### Added
@@ -26,7 +83,6 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
   
 - **Document**  
   Minor editorial refinements with no normative impact.
-
 ---
 
 ## [0.3.0] - 2025-10-28
@@ -62,6 +118,8 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 - Published in Markdown and PDF formats at [demp.ch/releases](https://demp.ch/releases).
 
 ---
+[0.5.0 PDF]: https://demp.ch/releases/demp-spec-0.5.0.pdf  
+[0.5.0 MD]: https://demp.ch/releases/demp-spec-0.5.0.md
 [0.4.0 PDF]: https://demp.ch/releases/demp-spec-0.4.0.pdf  
 [0.4.0 MD]: https://demp.ch/releases/demp-spec-0.4.0.md
 [0.3.0 PDF]: https://demp.ch/releases/demp-spec-0.3.0.pdf  
