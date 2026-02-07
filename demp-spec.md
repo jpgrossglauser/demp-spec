@@ -1,6 +1,13 @@
 # DEMP Specification
 
-**DEMP-SPEC 0.1.0**
+**DEMP-SPEC 0.2.0**
+
+---
+
+_**Revision history:**_  
+[https://demp.ch/spec/CHANGELOG.md](https://demp.ch/spec/CHANGELOG.md)
+
+---
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
@@ -36,7 +43,7 @@ The specification is intended for a variety of stakeholders involved in the deve
 
 ## 3 Versioning
 
-The document follows **Semantic Versioning (SemVer)** to manage its releases and updates. This approach ensures that developers and integrators can understand the impact of each version based on the changes made in the specification.
+The document follows **Semantic Versioning (SemVer) v2.0.0** to manage its releases and updates. This approach ensures that developers and integrators can understand the impact of each version based on the changes made in the specification.
 
 ## 4 Contributors
 
@@ -78,7 +85,11 @@ A DEMP Network **SHOULD BE** able to function as Local Area Network (LAN), with 
 #### 5.1.8 Virtual Private Network (VPN)
 A DEMP Network **SHOULD BE** able to function as Virtual Private Network (VPN), with Safety Information Systems (SIS) that are not reachable beyond those network boundaries.
 
-#### 5.1.9 Network Directory
+#### 5.1.9 Ad Hoc Network
+A Safety Information System (SIS) **MAY** support operation within a local mesh or peer-to-peer (P2P) ad hoc network that enables offline or short-range data exchange with participating Entities.
+In this mode, DEMP messages **SHOULD** be transmitted over any compatible communication protocol that supports secure, multi-hop or direct message propagation.
+
+#### 5.1.10 Network Directory
 A **Network Directory** **MUST** provide an up-to-date registry of all participating **Safety Information Systems (SIS)** within a DEMP Network. Each SIS **MUST** be able to access that directory and opt-in or opt-out as needed.
 
 ### 5.2 Safety Information Systems (SIS)
