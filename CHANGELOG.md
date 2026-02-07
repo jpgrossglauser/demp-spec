@@ -5,6 +5,30 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 
 ---
 
+## [0.4.0] - 2025-12-19
+
+### Added
+- **Versioning**  
+  The Markdown (MD) file is now the canonical source for future versions.
+
+- **Section 5.8.5 (Tie-Breaking)**  
+  A deterministic fallback procedure is now a mandatory requirement.
+
+### Changed
+- **Section 5.6 (Alerts)**  
+  Refined the normative definition of an Alert.
+
+- **Section 5.1.6 (Wide Area Network - WAN)**  
+  Internet reachability is no longer mandatory.
+
+- **Section 5.7.1 (Federation Structure)**  
+  Relaxed hierarchical federation constraints.
+  
+- **Document**  
+  Minor editorial refinements with no normative impact.
+
+---
+
 ## [0.3.0] - 2025-10-28
 
 ### Added
@@ -38,6 +62,8 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 - Published in Markdown and PDF formats at [demp.ch/releases](https://demp.ch/releases).
 
 ---
+[0.4.0 PDF]: https://demp.ch/releases/demp-spec-0.4.0.pdf  
+[0.4.0 MD]: https://demp.ch/releases/demp-spec-0.4.0.md
 [0.3.0 PDF]: https://demp.ch/releases/demp-spec-0.3.0.pdf  
 [0.3.0 MD]: https://demp.ch/releases/demp-spec-0.3.0.md  
 [0.2.0 PDF]: https://demp.ch/releases/demp-spec-0.2.0.pdf  
