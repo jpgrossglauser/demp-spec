@@ -1,6 +1,6 @@
 # DEMP Specification
 
-**DEMP-SPEC 0.2.0**
+**DEMP-SPEC 0.3.0**
 
 ---
 
@@ -33,7 +33,7 @@ The specification is intended for a variety of stakeholders involved in the deve
 
 - **System Architects and Developers**: Those designing and developing DEMP-compliant software.
 - **Integrators**: Professionals responsible for integrating DEMP-compliant solutions.
-- **Device Manufacturers**: Organizations that produce DEMP-compliant devices and software.
+- **Device Manufacturers**: Organizations that produce DEMP-compliant devices.
 - **Security and Safety Specialists**: Professionals involved in emergency management.
 - **Cybersecurity Specialists**: Professionals involved information security and cyber risk management.
 - **Lawyers**: Legal professionals ensuring that DEMP complies with relevant laws and regulations.
@@ -47,7 +47,7 @@ The document follows **Semantic Versioning (SemVer) v2.0.0** to manage its relea
 
 ## 4 Contributors
 
-- **Jean-Pierre Grossglauser**: Lead Author, Software Developer
+- **Jean-Pierre Grossglauser**: Lead Author, Software Architect 
 
 ## 5 Components
 
@@ -116,7 +116,18 @@ A **Certified Safety Information System (SIS)** **SHOULD** undergo a formal cert
 A **Safety Zone** (Zone) **MUST** be a defined physical or virtual area that is monitored for safety events and emergency management purposes.
 
 #### 5.3.1 Physical Zones
-A **Physical Zone** **MUST** be defined by accurately mapped geospatial data.
+A **Physical Zone** **MUST** be defined by accurate **spatial references**.
+
+##### 5.3.1.1 Mobility
+
+A **Physical Zone** **MAY** be either *static* or *dynamic*, depending on whether its **spatial references** remain constant over time.  
+
+A *static zone* represents a fixed physical location or area, such as a building or site, whereas a *dynamic zone* represents a moving or evolving area whose position can change with time, such as a vehicle or rescue perimeter.  
+
+The distinction between *static* and *dynamic* zones exists to ensure that Safety Information Systems (SIS) can correctly interpret, monitor, and propagate alerts in relation to zones whose **spatial references** may vary.  
+
+An SIS **MUST** continuously maintain each **Physical Zone’s** latest known **spatial references** to ensure accurate situational awareness.
+
 
 #### 5.3.2 Virtual Zones
 A **Virtual Zone** **MUST** be based on logical boundaries without geospatial data requirements.

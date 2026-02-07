@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 
 ---
 
+## [0.3.0] - 2025-10-28
+
+### Added
+- Introduced subsection **5.3.1.1 Mobility** under *5.3.1 Physical Zones*, defining the distinction between *static* and *dynamic* Physical Zones based on the behavior of their spatial references.  
+- Added a normative rule requiring that each Safety Information System (SIS) **MUST** continuously maintain the latest known spatial references of every Physical Zone for accurate situational awareness.  
+
+### Changed
+- Replaced the term **geospatial data** with **spatial references** in all normative descriptions concerning Physical Zones to achieve a more abstract and interoperable conceptual layer.  
+- Minor text edits for clarity, without technical change.
+
+---
+
 ## [0.2.0] - 2025-10-08
 
 ### Added
@@ -26,6 +38,8 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 - Published in Markdown and PDF formats at [demp.ch/releases](https://demp.ch/releases).
 
 ---
+[0.3.0 PDF]: https://demp.ch/releases/demp-spec-0.3.0.pdf  
+[0.3.0 MD]: https://demp.ch/releases/demp-spec-0.3.0.md  
 [0.2.0 PDF]: https://demp.ch/releases/demp-spec-0.2.0.pdf  
 [0.2.0 MD]: https://demp.ch/releases/demp-spec-0.2.0.md  
 [0.1.0 PDF]: https://demp.ch/releases/demp-spec-0.1.0.pdf  
