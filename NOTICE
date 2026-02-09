@@ -1,0 +1,24 @@
+Decentralized Emergency Management Protocol Specification (DEMP-SPEC)
+
+Copyright © 2025 Jean-Pierre Grossglauser
+
+This product includes the Decentralized Emergency Management Protocol
+Specification (DEMP-SPEC).
+
+DEMP-SPEC is licensed under the Apache License, Version 2.0 (the "License").
+You may not use this file except in compliance with the License. You may obtain
+a copy of the License at:
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, the DEMP-SPEC
+specification is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+DEMP-SPEC is the normative specification document for the Decentralized
+Emergency Management Protocol (DEMP). The DEMP protocol itself is a conceptual
+and technical standard and is not software.
+
+This NOTICE file applies solely to the DEMP-SPEC and does not
+impose licensing obligations on independent implementations of the DEMP.

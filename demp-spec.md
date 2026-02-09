@@ -1,49 +1,80 @@
 ---
-version: 0.5.0
-dateModified: 2026-01-13T00:00:00+00:00
-dateModifiedString: 13 January 2026
-abstract: |
-  Revision history: [https://demp.ch/spec/CHANGELOG.md](https://demp.ch/spec/CHANGELOG.md)
-
-  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
-
-  **The Markdown (MD) document is the canonical source for this version of the specification. In case of any inconsistency with other representations, the Markdown document SHALL prevail.**
-
-  This document is currently **not licensed**. At this stage, the specification is freely available for review, [feedback](https://demp.ch/index.html#contact), and experimentation. However, as the specification evolves, a formal licensing structure **SHALL** be introduced to ensure legal clarity and protection for contributors, integrators and users.
-
-  Until a formal license is in place, the specification remains entirely subject to the copyright and supervision of its author. Any public use, distribution, reproduction or modification of the specification **MUST** be explicitly allowed by the author, in accordance with Swiss laws. The current specification version **MUST** be used for experimental purposes only and is provided **as is**, without any warranty or liability for the author. The author does not provide any guarantees regarding the accuracy, completeness or suitability of the current specification. Users of the current specification do so at their own risk.
+version: 0.6.0
+dateModified: 2026-02-09T00:00:00+00:00
+dateModifiedString: 9 February 2026
 ---
 
-# Scope
+# Introduction
 
-The **Decentralized Emergency Management Protocol (DEMP)** ensures secure, interoperable and decentralized communication between Safety Information Systems (SIS), whether operating as standalone instances or within a federated network. It facilitates real-time data exchange across safety zones, entities, and devices, enabling seamless coordination and an effective, community-driven and digitally enhanced response during emergencies.
+The **Decentralized Emergency Management Protocol (DEMP)** provides secure,
+interoperable, decentralized communication between
+[Safety Information Systems (SIS)](#safety-information-system-sis), operating
+either as standalone nodes or within a [Federation](#federation). It supports
+scalable [Alert](#alert) propagation and information exchange across
+[Safety Zones](#safety-zone), [Entities](#entity) and [Devices](#device),
+enabling real-time collaborative emergency management.
 
-The **Decentralized Emergency Management Protocol Specification (DEMP-SPEC)** defines a technical standard that outlines a framework and guidelines for implementing and interacting with decentralized emergency management systems built on DEMP.
+The **Decentralized Emergency Management Protocol Specification (DEMP-SPEC)**
+defines the architecture and implementation guidelines for emergency management built on DEMP.
 
-The primary goal of this specification is to provide comprehensive documentation for developers and integrators, enabling them to create or integrate DEMP-based systems and applications. It describes the components, rules, and data structures necessary for the successful deployment of safety information systems in various environments.
+## Revision History
 
-It is important to note that this specification does not address the organizational or operational implementation of Safety Information Systems (SIS), nor does it cover the detailed design of software or hardware devices.
+The full revision history for this specification is maintained at:
+[https://demp.ch/spec/CHANGELOG.md](https://demp.ch/spec/CHANGELOG.md)
+
+## Source Repository
+
+The DEMP Specification (DEMP-SPEC) is maintained on
+[GitLab](https://gitlab.com) and mirrored to
+[GitHub](https://github.com) to support feedback, collaboration and community
+engagement. These public repositories provide transparency and spaces for
+discussing issues and tracking changes.
+
+- Canonical Repository:
+[https://gitlab.com/jpgrossglauser/demp-spec](https://gitlab.com/jpgrossglauser/demp-spec)
+
+- Mirror (read-only):
+[https://github.com/jpgrossglauser/demp-spec](https://github.com/jpgrossglauser/demp-spec)
+
+## Versioning
+
+This specification follows [Semantic Versioning (SemVer) 2.0.0](https://semver.org/spec/v2.0.0.html) to manage its
+releases and updates. Version numbers reflect changes to the specification and are intended to help stakeholders assess the impact of updates on existing implementations.
+
+For tooling and automation purposes, the current version of this specification
+may also be exposed via a `VERSION` file available at [https://demp.ch/spec/VERSION](https://demp.ch/spec/VERSION) 
+
+## Conformance
+
+### Requirement Levels
+
+The key words **"MUST"**, **"MUST NOT"**, **"REQUIRED"**, **"SHALL"**,
+**"SHALL NOT"**, **"SHOULD"**, **"SHOULD NOT"**, **"RECOMMENDED"**,
+**"MAY"**, and **"OPTIONAL"** in this document are to be interpreted as
+described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) and
+[RFC 8174](https://www.rfc-editor.org/rfc/rfc8174), when, and only when,
+they appear in all capitals, as shown here.
+
+# License
+
+This specification is licensed under the **Apache License, Version 2.0**.
+
+You may use, reproduce, modify and distribute this specification in compliance
+with the terms of the Apache License, Version 2.0. The license provides an
+express grant of patent rights from contributors and ensures legal clarity and
+protection for contributors, integrators and users.
+
+A copy of the license is available at:
+[https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+Additional attribution and notice information is provided in the
+[NOTICE](https://demp.ch/spec/NOTICE) file distributed with this specification.
 
 # Audience
 
-The specification is intended for a variety of stakeholders involved in the development, integration, and operation of decentralized emergency management systems. The primary audience includes:
-
-- **System Architects and Developers**: Those designing and developing DEMP-compliant software.
-- **Integrators**: Professionals responsible for integrating DEMP-compliant solutions.
-- **Device Manufacturers**: Organizations that produce DEMP-compliant devices.
-- **Security and Safety Specialists**: Professionals involved in emergency management.
-- **Cybersecurity Specialists**: Professionals involved information security and cyber risk management.
-- **Lawyers**: Legal professionals ensuring that DEMP complies with relevant laws and regulations.
-- **Policy Makers and Regulators**: Authorities responsible for regulating emergency management systems.
-- **Volunteers**: Individuals and communities actively promoting the adoption and implementation of DEMP.
-
-# Versioning
-
-The document follows **Semantic Versioning (SemVer) 2.0.0** to manage its releases and updates. This approach ensures that developers and integrators can understand the impact of each version based on the changes made in the specification.
-
-# Contributors
-
-- **Jean-Pierre Grossglauser**: Lead Author, System Architect
+The primary goal of this specification is to provide comprehensive documentation
+for **software architects, developers and integrators**, enabling them to design, implement
+and integrate DEMP-based systems and applications.
 
 # Architecture
 
@@ -57,11 +88,16 @@ There **MUST** be no central authority managing the DEMP Network operations.
 
 ### Interoperability
 
-A DEMP Network **MUST** support interoperability between different Safety Information System (SIS) implementations, ensuring that they can securely communicate with each other, regardless of their underlying hardware, software or geographical location.
+A DEMP Network **MUST** support interoperability between heterogeneous implementations of Safety Information Systems (SIS), ensuring that they can securely communicate with each other, regardless of their underlying hardware, software or geographical location.
 
 ### Communication
 
-A DEMP Network **SHOULD** rely on the Internet Protocol (IP) for communication and the Domain Name System (DNS) for naming and addressing purposes.
+A DEMP Network **SHOULD** rely on the Internet Protocol (IP) for communication
+([RFC 791](https://www.rfc-editor.org/rfc/rfc791),
+[RFC 8200](https://www.rfc-editor.org/rfc/rfc8200)) and **MAY** use the
+Domain Name System (DNS) for naming and addressing purposes
+([RFC 1034](https://www.rfc-editor.org/rfc/rfc1034),
+[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)).
 
 ### Scalability
 
@@ -89,21 +125,21 @@ A **DEMP Network** **MAY** support operation within a local mesh or peer-to-peer
 
 #### Directory
 
-A **DEMP Network** **MAY** provide a directory to facilitate discovery of participating Safety Information Systems (SIS).  
-Any such directory **MUST** maintain an up-to-date registry of participating Safety Information Systems (SIS).
+A DEMP Network **MAY** provide a directory to facilitate the discovery of Safety Information Systems (SIS). If provided, the directory **MUST** maintain an accurate and up-to-date registry of all participating SIS.
 
 #### Participation
 
-Participation in any discovery mechanism **MUST** be voluntary.  
-A Safety Information System (SIS) **MUST** be able to opt in to or opt out of a Network Directory without affecting its ability to operate within the DEMP Network.
+Participation in any discovery mechanism **MUST** be voluntary. A Safety Information System (SIS) **MUST** be able to opt in to or opt out of a Network Directory without affecting its ability to operate within the DEMP Network.
 
 ## Safety Information System (SIS)
 
-A **Safety Information System (SIS)** **MUST** monitor, manage, process and exchange safety-related data for Entities and between Safety Information Systems (SIS), either as a standalone server instance or as a participant in a Federation.
+A **Safety Information System (SIS)** **MUST** monitor, manage, process and exchange
+safety-related data for Entities and between Safety Information Systems (SIS),
+either as a standalone instance or as a participant in a Federation.
 
 ### Data Exchange
 
-A Safety Information System (SIS) **SHOULD** ensure reliable communication and information exchange with Entities and other Safety Information Systems (SIS), taking into account latency, bandwidth usage and availability constraints.
+A **Safety Information System (SIS)** **SHOULD** ensure reliable information exchange with Entities and other Safety Information Systems (SIS), taking availability constraints into consideration.
 
 ### Data Processing
 
@@ -111,11 +147,13 @@ A Safety Information System (SIS) **MUST** process DEMP data in accordance with 
 
 ### Data Storage
 
-A Safety Information System (SIS) **MAY** store DEMP data required for operation, recovery, and auditability.
+A Safety Information System (SIS) **MAY** store DEMP data required for operation, recovery and auditability.
 
-### Security
+### Confidentiality
 
-A Safety Information System (SIS) **MUST** protect data exchange, data processing, and data storage against unauthorized access and tampering through appropriate technical and organizational measures.
+A **Safety Information System (SIS)** **MUST** protect data exchange, data processing
+and data storage against unauthorized access and tampering through **documented**
+technical and organizational measures.
 
 ### Autonomy
 
@@ -141,7 +179,7 @@ Access to the **Hub** **MUST** be either public or private (network-restricted).
 
 A **Safety Zone** (Zone) **MUST** be a defined physical or virtual area that is monitored for safety events and emergency management purposes.
 
-### Physical Zones
+### Physical Zone
 
 A **Physical Zone** **MUST** be defined by accurate **spatial references**.
 
@@ -149,7 +187,7 @@ A **Physical Zone** **MUST** be defined by accurate **spatial references**.
 
 A **Physical Zone** **MAY** be either _static_ or _dynamic_, depending on whether its **spatial references** remain constant over time.
 
-### Virtual Zones
+### Virtual Zone
 
 A **Virtual Zone** **MUST** be based on logical boundaries without spatial reference requirements.
 
@@ -163,83 +201,85 @@ Such zones **MUST** have explicitly defined start and end times specified in Coo
 
 ## Entity
 
-An **Entity** **MUST** represent a participant interacting with a Safety Information System (SIS) and **MUST** be assigned exactly one Entity role.
+An **Entity** **MUST** represent a participant interacting with a Safety Information System (SIS).
 
-### Roles
+### Role
 
-An **Entity** **MUST** be assigned exactly one of the following roles, which define the nature of the participant interacting with a Safety Information System (SIS):
+An Entity **MUST** be assigned exactly one Entity role.
 
-- **Individual**: An Entity with this role **MUST** represent a single human person acting in an individual capacity.
+#### Individual
 
-- **Organization**: An Entity with this role **MUST** represent a structured group, institution or legal organization acting as a collective participant.
+An Entity with this role **MUST** represent a single human person acting in an individual capacity.
 
-- **Autonomous Agent**: An Entity with this role **MUST** represent a software-based agent capable of operating autonomously and interacting with the SIS without direct human intervention.
+#### Organization 
 
-A Safety Information System (SIS) **MAY** define additional Entity roles for internal or domain-specific use; in such cases, the SIS **MUST** ensure interoperability.
+An Entity with this role **MUST** represent a structured group acting as a collective participant.
 
-### Identification
+#### Autonomous Agent
 
-An **Entity** **MUST** be uniquely identifiable within a Safety Information System (SIS).
+An Entity with this role **MUST** represent a software-based agent capable of operating autonomously and interacting with the SIS without direct human intervention.
 
-### Authentication
+### Capability
 
-An **Entity** **MUST** authenticate to the Safety Information System (SIS) before any interaction or action can be performed.
+An **Entity** **MUST** expose its technical capabilities to a
+**Safety Information System (SIS)**, including the actions and interactions it
+is able to perform within the DEMP scope.
 
-#### Individuals
+### Connectivity
 
-Entities with the **Individual** role **MUST** use multi-factor authentication, where at least one of the factors is biometric.
+An **Entity** **MUST** reflect its current connectivity state, representing its
+ability to establish and maintain communication with a
+**Safety Information System (SIS)**.
 
-#### Organizations
-
-Entities with the **Organization** role **MUST** use cryptographic authentication.
-
-#### Autonomous Agents
-
-Entities with the **Autonomous Agent** role **MUST** use cryptographic authentication.
 
 ## Device
 
-Devices **MUST** be able to exchange data with a Safety Information System (SIS) on behalf of an Entity.
+A Device **MUST** be able to communicate with a Safety Information System (SIS)
+on behalf of an Entity.
 
-### Device Types
+### Device Type
 
-A Device **MUST** be classified as either a **Software Device** or a **Hardware Device**. This classification **SHOULD** be taken into account by the Safety Information System (SIS) to ensure appropriate interaction and handling.
+A **Device** **MUST** be classified as either a **Software Device** or a
+**Hardware Device**. This classification **SHOULD** be taken into account by
+interacting **Entities** to ensure correct handling.
 
-### Device Modes
+### Device Mode
 
-A Device **MUST** operate in either **Active** or **Passive** mode. The selected mode defines how the Device may interact with the Safety Information System (SIS).
+A Device **MUST** operate in either **Active** or **Passive** mode. The selected
+mode defines how an Entity **MAY** interact with the Device through the Safety
+Information System (SIS).
 
 #### Active Devices
 
-An **Active Device** **MUST** be capable of both sending data to and receiving data from the Safety Information System (SIS).
+An **Active Device** **MAY** change its operational state in response to a
+request issued by an Entity.
 
 #### Passive Devices
 
-A **Passive Device** **MUST** be capable of sharing data with the Safety Information System (SIS), but **MUST NOT** initiate communication.
+A **Passive Device** **MUST NOT** change its operational state in response to
+any request issued by an Entity.
 
 ## Alert
 
 An **Alert** **MUST** represent a safety, security or emergency situation managed by a Safety Information System (SIS).
 
-### Alert Status
+### Status
 
 Each Alert **MUST** have exactly one status that reflects its current state within the Safety Information System (SIS).
 
 At least the following alert statuses **MUST** be defined, supported and interpreted as follows:
 
-- **Reported**: An Alert with this status **MUST** indicate that the alert has been triggered by the Safety Information System (SIS).
+- **Reported**: This status **MUST** indicate that an Alert has been triggered by the Safety Information System (SIS).
 
-- **Responding**: An Alert with this status **MUST** indicate that response, coordination or mitigation actions are currently being performed.
+- **Responding**: This status **MUST** indicate that response, coordination or mitigation actions are currently being performed.
 
-- **Resolved**: An Alert with this status **MUST** indicate that the situation has been addressed and that no further response action is required.
+- **Resolved**: This status **MUST** indicate that the situation has been addressed and that no further response action is required.
 
-- **Rejected**: An Alert with this status **MUST** indicate that the alert has been dismissed and **MUST NOT** require further action.
+- **Rejected**: This status **MUST** indicate that an alert has been dismissed and **MUST NOT** require further action.
 
-A Safety Information System (SIS) **MAY** define additional Alert status for internal or domain-specific use; in such cases, the SIS **MUST** ensure interoperability.
+### Level
 
-### Alert Level
-
-Alert level **MUST** indicate the escalation tier of an alert and define the expected response and handling obligations.
+The Alert level **MUST** indicate the escalation tier of an alert and define the expected response and handling obligations.
 
 At least the following alert levels **MUST** be defined and interpreted as follows:
 
@@ -250,8 +290,6 @@ At least the following alert levels **MUST** be defined and interpreted as follo
 - **Warning**: Alerts of this level **MUST** represent potential safety issues and **MUST** require confirmation of reception.
 
 - **Emergency**: Alerts of this level **MUST** represent situations requiring immediate intervention.
-
-A Safety Information System (SIS) **MAY** define additional Alert levels for internal or domain-specific use; in such cases, the SIS **MUST** ensure interoperability.
 
 ### Zone Alert
 
@@ -271,126 +309,173 @@ An **Open Alert** **MUST** be generated for situations requiring widespread prop
 
 #### Propagation
 
-An **Open Alert** **MUST** be forwarded to every Federation a SIS is a member of.
-
-Each Federated SIS **SHOULD** propagate the alert according to the Federation’s Open Alert Policy (OAP).
-
-Third-party SIS **MAY** further propagate the alert beyond their Federations according to their respective policies.
+An Open Alert **SHOULD** be forwarded by the originating Safety Information System
+(SIS) to every Federation it participates in. Each Federation member **MAY** subsequently propagate the Open Alert to third-party systems.
 
 ## Federation
 
-A **Federation** **MUST** be a group of Safety Information Systems (SIS) that formally collaborate to share information and coordinate safety and emergency management.
+A Federation **MUST** be a structured group of Safety Information Systems (SIS) that voluntarily and formally collaborate through explicitly defined agreements in order to share information and, where applicable, coordinate decision-making related to safety and emergency management.
 
 ### Structure
 
-Federations **MAY** adopt a **Hierarchical Federation** structure.
+Federations **MAY** adopt a hierarchical structure. A hierarchical
+Federation **MUST** be composed of multiple federation levels, where a Safety
+Information System (SIS) may federate with other SIS operating at different
+scopes, geographical coverage, responsibilities, or jurisdictions.
 
-A **Hierarchical Federation** **MUST** be composed of multiple federation levels, where a Safety Information System (SIS) may federate with other SIS operating at different scales.
+### Governance
+ 
+Federation governance **MUST** be explicitly defined through formally adopted
+agreements and policies accepted by all participating Safety Information
+Systems (SIS).
 
-This hierarchy **MAY** reflect differences in operational scope, geographical coverage, responsibility, or jurisdiction.
+#### Alert Management Agreement (AMA)
 
-A **Hierarchical Federation** **MUST NOT** inherently impose centralized authority or mandatory decision-making control across federation levels. Any authority or responsibility exercised across levels **MUST** be explicitly defined and agreed upon by the participating federation members.
+A **Federation** **SHOULD** define an **Alert Management Agreement (AMA)**
+describing how, when and where Federated Alerts are triggered, escalated
+and handled across participating **Safety Information Systems (SIS)**.
 
-### Alert Management Agreement (AMA)
+#### Consensus Decision-Making Agreement (CDMA)
 
-A **Federation** **SHOULD** define an **Alert Management Agreement (AMA)** describing how Federated Alerts are triggered, escalated and handled across member Safety Information Systems (SIS).
+A **Federation** **SHOULD** establish a **Consensus Decision-Making Agreement (CDMA)**
+that defines the applicable polling mechanisms, decision thresholds and any
+extended or overriding decision-making privileges.
 
-### Consensus Decision-Making Agreement (CDMA)
+#### Conflict Resolution Agreement (CRA)
 
-A Federation **SHOULD** establish a Consensus Decision-Making Agreement (CDMA) defining voting mechanisms and any extended decision-making privileges within the authorization model, where applicable.
+A **Federation** **SHOULD** define a **Conflict Resolution Agreement (CRA)**
+describing how conflicts between participating Safety Information Systems (SIS) are
+resolved.
 
-### Conflict Resolution Agreement (CRA)
+#### Open Alert Policy (OAP)
 
-A **Federation** **SHOULD** define a **Conflict Resolution Agreement (CRA)** describing how conflicts between members are resolved.
-
-### Open Alert Policy (OAP)
-
-A **Federation** **SHOULD** establish a common **Open Alert Policy (OAP)** defining the conditions under which members handle **Open Alerts**.
+A **Federation** **SHOULD** establish a common **Open Alert Policy (OAP)**
+defining the conditions under which participating Safety Information Systems
+(SIS) accept, process or forward Open Alerts.
 
 ## Consensus Decision-Making (CDM)
 
-A Safety Information System (SIS) or Federation **MAY** implement a Consensus Decision-Making process to coordinate significant decisions involving multiple participating entities.
+A Consensus Decision-Making (CDM) process **MAY** be used within a Safety
+Information System (SIS) or a Federation to resolve specific decisions.
 
-### Time-Bound Polling
+CDM decisions **MUST** be made collectively by participating entities within the
+applicable scope and **MUST** be enforced by the hosting SIS or Federation in
+accordance with the applicable decision agreements and policies.
+
+### Polling
+
+Polling is the mechanism by which participating entities express a decision
+within a Consensus Decision-Making (CDM) process. Polling **MUST** be bounded,
+deterministic and time-constrained to ensure safe and predictable outcomes.
+
+#### Time-Bound Polling
 
 The polling mechanism **MAY** be time-bound to ensure prompt decision-making.
  
-### Tie-Breaking
-
 #### Repeated Poll
 
-A Safety Information System (SIS) **MAY** repeat a poll provided that the alert severity is below a defined critical threshold and sufficient time remains within the applicable decision window.
+A **Safety Information System (SIS)** **MAY** repeat a poll if the outcome cannot be
+formally established, provided that the conditions for such repetition are met
+within the applicable decision window.
 
-#### Deterministic Fail-Safe Resolution
+#### Fallback Resolution
 
 If a repeated poll is not feasible due to alert level, time constraints or any other reason, the Safety Information System (SIS) **MUST** apply a deterministic fallback procedure.
 
-# Certification
+The fallback procedure **MUST NOT** rely on additional polling and **MUST**
+produce a single, deterministic outcome.
 
-Certification **MUST** establish *verifiable trust claims* that can be independently validated through the Chain of Trust.
+### Override
 
-## Independent Certification Authority (ICA)
+A Consensus Decision-Making (CDM) process **MAY** be bypassed when an Entity with
+sufficient privileges is available and permitted to act within the applicable
+scope.
 
-An **Independent Certification Authority (ICA)** **MUST** be an independent organization responsible for evaluating and certifying subjects defined by this specification according to the applicable certification requirements and framework.
+# Security and Trust
 
-An ICA:
+## Identity
+
+Identity defines how a Subject within the DEMP scope is uniquely identified and how control over identifiers is established and maintained over time.
+
+### Identifier
+
+An Identity **MUST** be associated with one or more stable and unique identifiers
+within the DEMP Network scope.
+
+### Binding
+
+Identity binding methods **MUST** define how an identifier is initially
+assigned to a Subject and how this association is established as
+authoritative within a defined scope.
+
+Binding **MUST** be explicit and auditable and **MUST NOT** imply global
+authority or transitive trust.
+
+At least the following identity binding methods **SHOULD** be supported.
+
+#### Trust-On-First-Use (TOFU)
+
+Under the Trust-On-First-Use (TOFU) binding method, an identifier **MUST** be
+accepted on its first encounter and **MUST** be considered trusted as long as
+continuity is maintained.
+
+#### Explicit Binding
+
+Under the Explicit Binding method, an identifier **MUST** be bound through an
+explicit and trusted verification process.
+
+#### Delegated Binding
+
+Under the Delegated Binding method, an identifier **MUST** be bound through
+delegation by another trusted party.
+
+#### Self-Asserted Binding
+
+Under the Self-Asserted Binding method, an identifier **MAY** be claimed without
+prior verification and **MUST** be treated as unverified.
+
+## Authentication
+
+Authentication **MUST** be the mechanism by which an Entity proves control over
+its Identity to a Safety Information System (SIS), or by which an SIS proves
+control over its Identity to a Federation.
+
+## Certification
+
+Certification **MUST** establish *verifiable trust claims* that can be independently validated through a Chain of Trust.
+
+### Authority
+
+A **Certification Authority** **MUST** be an independent organization responsible for evaluating and certifying Entities, Safety Information Systems and Federations in accordance with the applicable Certification Framework.
+
+A Certification Authority:
 
 - **MUST** be organizationally and operationally independent from the subject it certifies  
 - **MUST** apply evaluation criteria that are publicly available  
 - **MUST** apply evaluation criteria consistently to all subjects it certifies  
 - **MUST** be clearly identifiable and accountable  
-- **MUST** support certification lifecycle management, including issuance, expiry, suspension, and revocation  
+- **MUST** support certification lifecycle management, including issuance, expiry, suspension and revocation  
 
-### Oversight
+#### Oversight
 
-Independent Certification Authorities (ICA) **MAY** perform peer oversight of other ICAs to assess compliance and adherence to recognized best practices.
+Certification Authorities **MAY** perform peer oversight to assess compliance
+with this specification and adherence to recognized best practices.
 
-## Certification Framework
+### Framework
 
 Any certification issued under the Certification Framework:
 
-- **MUST** be issued by an Independent Certification Authority (ICA)
-- **MUST** be unambiguously attributable to a specific ICA  
+- **MUST** be issued by a Certification Authority
+- **MUST** be unambiguously attributable to a specific Certification Authority
 - **MUST** be time-bounded, with an explicit validity period  
 - **MUST** support suspension and revocation  
 - **MUST** be cryptographically verifiable
 
-Certification **MUST** result in a verifiable certification assertion that can be independently validated through the Chain of Trust.
+## Authorization
 
-## Certified Safety Information System
-
-A Safety Information System (SIS) **MUST** be considered a **Certified Safety Information System** when it holds a valid certification.
-
-## Certified Entity
-
-An Entity **MUST** be considered a **Certified Entity** when it holds a valid certification.
-
-# Authorization
-
-A Safety Information System (SIS) **MUST** implement a privileges-based authorization model to control actions performed by Entities.
-
-## Extended Privileges
-
-Extended privileges **MUST** represent authorization grants that exceed the default
-operational or decision-making capabilities of an Entity.
-
-Extended privileges:
-
-- **MUST** be granted explicitly through the privileges-based authorization model
-- **MUST** be limited in scope and purpose
-- **MUST** be time-bounded
-- **MUST** be applicable only to an Entity with a valid Certification
-
-Extended privileges **MAY** be defined at the Safety Information System (SIS) or Federation level.
-
-
-# Chain of Trust
-
-The Chain of Trust **MUST** define the technical and procedural mechanisms by which a Safety Information System (SIS) verifies trust, enforces trust-based decisions and records trust-relevant events.
-
-## Trust Assertions
-
-The Chain of Trust **MUST** operate on **trust assertions**, defined as cryptographically verifiable claims derived from certifications issued under the Certification Framework.
+Authorization **MUST** define a privileges-based model governing the
+permission to perform actions by Entities, Safety Information Systems (SIS), and
+Federations within the DEMP scope.
 
 ## Auditability
 
@@ -406,3 +491,20 @@ Audit records **MUST** be pseudonymous by design.
 
 To support immutability and non-repudiation, trust-related lifecycle events **MUST** be recorded in an append-only audit registry.
 
+# Accessibility
+
+Implementations **MUST** ensure that alerts and other safety-critical information
+remain accessible to all users, regardless of physical, sensory, cognitive or
+situational limitations.
+
+## Inclusion
+
+Implementations **MUST** provide an inclusive user experience enabling access for users with disabilities, including but not limited to visual, auditory, motor and cognitive impairments.
+
+## Adaptability
+
+Implementations **MUST** be designed to operate effectively under adverse conditions commonly associated with emergency situations and **SHOULD** optimize resource usage to minimize computational load, network bandwidth and energy consumption.
+
+## Internationalization
+
+Alerts and generic emergency instructions **MUST** be expressed in a language-agnostic form at the protocol level, enabling localized rendering by implementations without altering the underlying semantic meaning.

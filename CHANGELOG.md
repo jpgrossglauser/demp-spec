@@ -5,6 +5,65 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 
 ---
 
+## [0.6.0] – 2026-02-09
+
+### Added
+  
+- **Accessibility**  
+  - Added a new top-level **Accessibility** section.
+
+- **Identity Binding Methods**
+  - Introduced a normative **Identity Binding** model.
+
+- **Certification of Federations**  
+  - Extended the Certification model to include **Federations**.
+
+- **Conformance Section**  
+  - Introduced a **Conformance** section.
+
+- **Source Repository Section**  
+  - Documented the canonical and mirror source repository for DEMP-SPEC.
+
+- **Licensing**
+  - Added a dedicated **License** section to the specification for legal clarity.
+  
+### Changed
+
+- **Project Management**
+  - Formalized the **Apache License, Version 2.0** as the governing license for the specification.
+  - Formalized Git-based version control, designating GitLab as the canonical repository and GitHub as a mirror.
+  - Introduced canonical, versioned specification URLs under `/spec/{version}`.
+
+- **Alert Model Clarifications**
+  - Clarified the semantics of **Zone**, **System**, **Federated**, and **Open Alerts**.
+  - Refined Open Alert propagation normative definition to emphasize voluntary forwarding and non-guaranteed reach.
+
+- **Federation Governance**
+  - Strengthened normative language around Federation governance agreements.
+  - Explicitly tied Consensus Decision-Making (CDM) enforcement to applicable agreements and policies (AMA, CDMA, CRA, OAP).
+
+- **Consensus Decision-Making (CDM)**
+  - Clarified override semantics: CDM may be bypassed only when an entity with sufficient privileges is both available and authorized.
+  - Renamed and clarified deterministic resolution as **Deterministic Fallback Resolution**.
+
+- **Security and Trust**
+  - Clarified the scope of Authentication to explicitly cover SIS–Federation interactions.
+  - Harmonized Certification Authority terminology.
+
+- **Document Structure and Editorial Refinements**
+  - Applied textual refinements for clarity, consistency and normative precision.
+  - Updated internal references, anchors and links to improve navigability and cross-section coherence.
+  - PDF exports now use **A4 paper size**.
+  - Moved the **Revision History** into Introduction.
+  - Moved the **Audience** section into Introduction.
+  - Renamed the former *Scope* section to **Overview** for conceptual clarity.
+  - Improved consistency and normative precision across Architecture, Security and Trust sections.
+  
+### Removed
+
+- **Redundant Structural Sections**  
+  - Removed sections that duplicated or reduced the clarity of normative content without adding protocol-level requirements.
+
 ## [0.5.0] - 2026-01-13
 
 ### Added
@@ -118,6 +177,8 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 - Published in Markdown and PDF formats at [demp.ch/releases](https://demp.ch/releases).
 
 ---
+[0.6.0 PDF]: https://demp.ch/releases/demp-spec-0.6.0.pdf  
+[0.6.0 MD]: https://demp.ch/releases/demp-spec-0.6.0.md
 [0.5.0 PDF]: https://demp.ch/releases/demp-spec-0.5.0.pdf  
 [0.5.0 MD]: https://demp.ch/releases/demp-spec-0.5.0.md
 [0.4.0 PDF]: https://demp.ch/releases/demp-spec-0.4.0.pdf  
